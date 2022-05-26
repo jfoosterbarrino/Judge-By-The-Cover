@@ -47,6 +47,7 @@ export default function LoginForm(){
             <TextField
                 id = 'password'
                 name = 'password'
+                type = "password"
                 fullWidth
                 sx = {{mb:2, mt:2, width:"50%"}}
                 color = "info"

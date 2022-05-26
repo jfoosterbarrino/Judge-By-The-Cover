@@ -90,6 +90,7 @@ export default function RegisterForm({user ={id:1, firstName:"Jalen", lastName:"
             <TextField
                 id = 'password'
                 name = 'password'
+                type = 'password'
                 fullWidth
                 sx = {{mb:2, mt:2, width:"50%"}}
                 color="success"
@@ -103,6 +104,7 @@ export default function RegisterForm({user ={id:1, firstName:"Jalen", lastName:"
             <TextField
                 id = 'confirmPassword'
                 name = 'confirmPassword'
+                type = 'password'
                 fullWidth
                 sx = {{mb:2, mt:2, width:"50%"}}
                 color="success"
