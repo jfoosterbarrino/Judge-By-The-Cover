@@ -20,14 +20,14 @@ export const themeOptions = {
       main: '#05204a',
     },
     success: {
-      main: '#539987',
+      main: '#3a6ea5',
     },
     divider: '#000000',
     warning: {
-      main: '#3a6ea5',
+      main: '#fffffa',
     },
   },
 };
-
+// green color code: #539987
   const theme = createTheme(themeOptions);
   export default theme;

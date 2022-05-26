@@ -48,9 +48,9 @@ const itemData = [
     featured: true,
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    author: '@rollelflex_graphy726',
+    img: 'https://res.cloudinary.com/dccf9vnoo/image/upload/v1653580372/_106256569_hpotterbookgetty_cikurf.jpg',
+    title: 'Harry Potter',
+    author: 'J.K. Rowling',
   },
   {
     img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',

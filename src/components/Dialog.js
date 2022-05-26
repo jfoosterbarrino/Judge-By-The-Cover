@@ -24,7 +24,7 @@ export default function AlertDialogSlide({children, ...props}) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined"  onClick={handleClickOpen}>
         {children}
       </Button>
       <Dialog
