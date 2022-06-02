@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import Card from './components/Card';
+import BookCard from './components/BookCard';
 import ImageList from './components/ImageList';
 import Dialog from './components/Dialog';
 import LoginForm from './forms/LoginForm';
@@ -10,6 +10,9 @@ import { CancelToken } from 'apisauce';
 import {getUser} from './api/apiBasicAuth';
 import apiUser from './api/apiUser';
 import apiBook from './api/apiBook';
+import BookBrowser from './components/BookBrowser';
+import SubjectBar from './components/SubjectBar';
+import Typography from '@mui/material/Typography';
 
 let userData = {
   "email" : "jalenfooster@gmail.com",
@@ -22,7 +25,7 @@ const myToken = "fC87XwkBvWca7HVQbMWGPKnMi7O8F3HKecnhwGUv9WA"
 
 const handleAPITest= async ()=>{
   const source = CancelToken.source();
-  const response_object= await apiUser.putUser(myToken, userData, source.token);
+  const response_object= await apiBook.getBooks(source.token);
   console.log(response_object)
 }
 
@@ -30,18 +33,15 @@ function App() {
   return (
     <>
       <Navbar/>
+      <Typography sx={{mb:10, display: "flex", justifyContent: 'center'}}>
+      <Button color="info" onClick={handleAPITest}>API TESTER</Button>
+      </Typography>
       <br/>
-      <LoginForm/>
+      <BookBrowser/>
       <br/>
-      <RegisterForm/>
+      <ImageList/>      
       <br/>
-      <Card backgroundColor="primary">The Great Gatsby</Card>
-      <br/>
-      <Dialog>Add to My List</Dialog>
-      <br/>
-      <Button color="primary" onClick={handleAPITest}>API TESTER</Button>
-      <br/>
-      <ImageList/>
+      
     </>
   );
 }
