@@ -13,6 +13,7 @@ import apiBook from './api/apiBook';
 import BookBrowser from './components/BookBrowser';
 import SubjectBar from './components/SubjectBar';
 import Typography from '@mui/material/Typography';
+import Test from './components/Test';
 
 let userData = {
   "email" : "jalenfooster@gmail.com",
@@ -33,14 +34,18 @@ function App() {
   return (
     <>
       <Navbar/>
+      <Test/>
+      <br/>
+      {/* <LoginForm/>
+      <br/>
       <Typography sx={{mb:10, display: "flex", justifyContent: 'center'}}>
       <Button color="info" onClick={handleAPITest}>API TESTER</Button>
       </Typography>
-      <br/>
+      <br/> */}
       <BookBrowser/>
-      <br/>
+      {/* <br/>
       <ImageList/>      
-      <br/>
+      <br/> */}
       
     </>
   );

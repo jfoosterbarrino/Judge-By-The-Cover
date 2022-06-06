@@ -16,6 +16,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import EditButton from './Button';
+// import useBook from '../hooks/useBook';
+// import CircularProgress from '@mui/material/CircularProgress';
+// import Error from './Error';
+// import Box from '@mui/material/Box';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,8 +33,27 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function BookCard({book}) {
+  const [expanded, setExpanded] = React.useState(false); 
+  
+  // const {error, book} = useBook(21)
 
-  const [expanded, setExpanded] = React.useState(false);
+  // if(error){
+  //   return(
+  //     <Box sx={{display:"flex"}}>
+  //       <Error>{error}</Error>
+  //     </Box>
+  //   )
+  // }
+
+  // if(!book){
+  //   return(
+  //     <Box sx={{display:"flex"}}>
+  //       <CircularProgress/>
+  //     </Box>
+  //   )
+  // }
+
+  
 
   const handleExpandClick = () => {
     setExpanded(!expanded);

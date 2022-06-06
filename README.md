@@ -8,6 +8,11 @@
 ### Questions
 # Need to figure out how to do multiple children for same reusable component
 # Understanding ...props and styles better
-# import { package } from 'installation' vs import Component from 'folder'??
-# confirm password correctly on RegisterForm?
-# Didn't use, but little shaky on Select, Menu
+
+
+
+# useBooks, useBook, and useLogin work
+# not sure how to test useEditUser and useDeleteUser
+# getUserFromLS issue in AppContext
+# need more clarity on creating and using context (BookContext)
+# getBooksBySubj??

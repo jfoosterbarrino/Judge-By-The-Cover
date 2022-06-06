@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
-const subjects =[{id:1,name:"Self Help"}, {id:2,name:"Science"}, {id:3,name:"Marriage Advice"}, {id:4,name:"Entertainment"}, {id:5,name:"Programming"}, {id:6,name:"Cooking"}]
+const subjects =[{id:1,name:"All"}, {id:2,name:"Self Help"}, {id:3,name:"Science"}, {id:4,name:"Marriage Advice"}, {id:5,name:"Entertainment"}, {id:6,name:"Programming"}, {id:7,name:"Cooking"}]
 
 
 
