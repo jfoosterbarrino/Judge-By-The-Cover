@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Button from '../components/Button';
 import TextField from '@mui/material/TextField';
+import useCreateUser from '../hooks/useCreateUser';
+import useEditUser from '../hooks/useEditUser';
+import {AppContext} from '../context/AppContext';
 
 
 const ValidationSchema = Yup.object(
@@ -18,7 +21,14 @@ const ValidationSchema = Yup.object(
 
 
 
-export default function RegisterForm({user ={id:1, firstName:"Jalen", lastName:"Fooster", email:"j@f.com", password:"password",confirmPassword:"password"}}){
+export default function RegisterForm(){
+    const {user} = useContext(AppContext)
+
+    const [newUser, setNewUser] = useState({})
+    const [editUser, setEditUser] = useState({})
+
+    useCreateUser(newUser)
+    useEditUser(editUser)
 
     const initialValues ={
         firstName:user?.firstName ?? "",
@@ -30,9 +40,9 @@ export default function RegisterForm({user ={id:1, firstName:"Jalen", lastName:"
 
     const handleSubmit=(values, resetForm) => {
         if(user){
-            console.log("Updating...")
+            setEditUser(values)
         }else{
-            console.log("Registering...")
+            setNewUser(values)
         }
         console.log(values)
         resetForm(initialValues)

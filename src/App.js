@@ -34,16 +34,19 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Test/>
+      <LoginForm/>
       <br/>
-      {/* <LoginForm/>
+      <RegisterForm/>
+      {/* <Test/>
+      <br/>
+      <LoginForm/>
       <br/>
       <Typography sx={{mb:10, display: "flex", justifyContent: 'center'}}>
       <Button color="info" onClick={handleAPITest}>API TESTER</Button>
       </Typography>
-      <br/> */}
+      <br/>
       <BookBrowser/>
-      {/* <br/>
+      <br/>
       <ImageList/>      
       <br/> */}
       

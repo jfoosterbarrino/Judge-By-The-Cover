@@ -7,6 +7,7 @@ export default function useLogin(loginCreds, setLoginCreds, setError, setUser){
     const login = async(cancelToken)=>{
         const response = await getUser(loginCreds.email, loginCreds.password, cancelToken)
         if(response.user?.token){
+            console.log(response)
             console.log('logged in');
             setUser(response.user);
             setLoginCreds({})

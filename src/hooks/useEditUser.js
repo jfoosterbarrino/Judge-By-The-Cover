@@ -3,18 +3,24 @@ import apiUser from '../api/apiUser';
 import {CancelToken} from 'apisauce';
 import  {AppContext} from '../context/AppContext';
 
-export default function useEditUser(newInfo){
+export default function useEditUser(userInfo){
     const {user, setUser} = useContext(AppContext)
 
     useEffect(()=>{
         const source =CancelToken.source();
         const editUser = async()=>{
-            const response = await apiUser.putUser(user.token,newInfo, source.token)
-            setUser(response)
+            const response = await apiUser.putUser(user.token,userInfo, source.token)
+            if (response){
+                setUser(response)
+                console.log(`User: ${userInfo.firstName} ${userInfo.lastName} Edited`)
+            }else if(response === false && response !== undefined){
+                console.log(`Please reauthorize you account`)
+            }
+            
         }
         editUser()
         return ()=>{source.cancel()}
     },
-    [newInfo]
+    [userInfo]
     )
 }
