@@ -21,16 +21,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BasicGrid() {
-//   const {bookList} = useContext(BookContext)
-//   const [books, setBooks]= useState(bookList)
-
-//   const handleClick=()=>{
-//     setBooks(bookList)
-//     console.log("Here are the books")
-//     console.log(books)
-// }
-  
+  const {bookList, setBookList} = useContext(BookContext)
   const {error, books} = useBooks()
+  setBookList(books)
 
   if(error){
     return(
@@ -40,7 +33,7 @@ export default function BasicGrid() {
     )
   }
 
-  if(!books){
+  if(!bookList){
     return(
       <Box sx={{display:"flex"}}>
         <CircularProgress/>
@@ -53,46 +46,17 @@ export default function BasicGrid() {
     <Typography variant ="h3" component="div" color ="secondary" sx={{display: 'flex', justifyContent: 'center'}}>Explore Book Collection</Typography>
     <hr/>
     <br/>
-    {/* <Button onClick={handleClick}>Show</Button>
-    <br/> */}
     <SubjectBar/>
     <br/>
     <Box sx={{ flexGrow: 1, mb:10 }}>
       <Grid container spacing={10}>
-        {books.map((book)=>(
+        {bookList.map((book)=>(
         <Grid item lg={3} md={4} sm={6} xs={12} key={book.id} sx={{display:"flex", justifyContent:"center"}}>
           <Item>
             <BookCard book={book}/>
-                {/* <Typography variant="h4" color="#ba8f95">
-                {book.title}
-                </Typography>
-                <Typography variant="body1" color="#ba8f95">
-                By: {book.author}
-                </Typography>
-                <br/>
-                <img height="150" src={book.img}></img>
-                <Typography variant="body1" color="#ba8f95">
-                    <br/>
-                    <EditButton>Add to My List</EditButton>
-                    <br/>
-                    <br/>
-                    <strong>Summary</strong>
-                <br/>
-                {book.summary}
-                <br/>
-                <br/>
-                <strong>Pages: </strong>{book.pages}
-                <br/>
-                <strong>Subject: </strong>{book.subject}
-                <br/>
-                <strong>ID: </strong>{book.id}
-                </Typography> */}
-
           </Item>
         </Grid>
         ))}
-        
-
       </Grid>
     </Box>
   </>);

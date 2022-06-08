@@ -1,14 +1,43 @@
-import {createContext} from 'react';
-import useBooks from '../hooks/useBooks';
+import {createContext, useState, useReducer, useEffect} from 'react';
+import {listReducer, listActions} from '../reducers/listReducer';
+
 
 export const BookContext = createContext()
 
 const BookContextProvider = ({children})=>{
 
+    const getListFromLS =()=>{
+        let readingList = localStorage.getItem('readingList')
+        if(readingList){
+            return JSON.parse(readingList)
+        }
+    }
+
+    const [bookList,setBookList] = useState([])
+    const [readingList, dispatch] = useReducer(listReducer, getListFromLS()?? [])
+
+    
+    useEffect(()=>{
+        if(readingList?.length >0){
+            localStorage.setItem('readingList', JSON.stringify(readingList))
+        }
+    }, [readingList]
+    )
     
 
     const values = {
-        bookList: useBooks()
+        bookList,
+        setBookList,
+        readingList,
+        addBook:(book)=>{
+            dispatch({type: listActions.addBook, book})
+        },
+        removeBook:(book)=>{
+            dispatch({type: listActions.removeBook, book})
+        },
+        clearList:()=>{
+            dispatch({type: listActions.clearList})
+        }
     }
 
     return(

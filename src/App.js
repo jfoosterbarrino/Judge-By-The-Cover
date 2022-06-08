@@ -14,6 +14,7 @@ import BookBrowser from './components/BookBrowser';
 import SubjectBar from './components/SubjectBar';
 import Typography from '@mui/material/Typography';
 import Test from './components/Test';
+import MyReadingList from './views/MyReadingList';
 
 let userData = {
   "email" : "jalenfooster@gmail.com",
@@ -44,10 +45,10 @@ function App() {
       <Typography sx={{mb:10, display: "flex", justifyContent: 'center'}}>
       <Button color="info" onClick={handleAPITest}>API TESTER</Button>
       </Typography>
+      <br/> */}
+      {/* <MyReadingList/> 
       <br/>
-      <BookBrowser/>
-      <br/>
-      <ImageList/>      
+      <BookBrowser/>     
       <br/> */}
       
     </>

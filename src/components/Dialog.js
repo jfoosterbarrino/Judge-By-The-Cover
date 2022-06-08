@@ -6,12 +6,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import BookCard from './BookCard';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({children, ...props}) {
+export default function AlertDialogSlide({book}) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -24,9 +26,8 @@ export default function AlertDialogSlide({children, ...props}) {
 
   return (
     <div>
-      <Button variant="outlined"  onClick={handleClickOpen}>
-        {children}
-      </Button>
+      <MenuBookOutlinedIcon onClick={handleClickOpen}>
+      </MenuBookOutlinedIcon>
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -34,15 +35,12 @@ export default function AlertDialogSlide({children, ...props}) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Confirm"}</DialogTitle>
+  
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Are you sure you want to add this book to your personal reading list?
-          </DialogContentText>
+        <BookCard book={book}/>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Add</Button>
+        <DialogActions sx={{display:"flex", justifyContent: 'center'}}>
+          <Button color="info" onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>

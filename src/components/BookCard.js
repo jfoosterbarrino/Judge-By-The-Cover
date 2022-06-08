@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import EditButton from './Button';
+import {BookContext} from '../context/BookContext';
 // import useBook from '../hooks/useBook';
 // import CircularProgress from '@mui/material/CircularProgress';
 // import Error from './Error';
@@ -34,6 +35,8 @@ const ExpandMore = styled((props) => {
 
 export default function BookCard({book}) {
   const [expanded, setExpanded] = React.useState(false); 
+  const {addBook, removeBook, readingList} = useContext(BookContext)
+
   
   // const {error, book} = useBook(21)
 
@@ -71,7 +74,7 @@ export default function BookCard({book}) {
         // }
         action={
           <IconButton aria-label="Add to My List" color="success">
-            <AddCircleOutlineOutlinedIcon />
+            <AddCircleOutlineOutlinedIcon key="add" onClick={()=>{addBook(book)}}/>
           </IconButton>
         }
         title={book?.title}
@@ -120,7 +123,11 @@ export default function BookCard({book}) {
             Subject: {book?.subject}
           </Typography>
           <Typography sx={{display:"flex", justifyContent: 'center'}} paragraph>
-            <EditButton color="info">Add to My List</EditButton>
+            {readingList.includes(book)?
+            <EditButton color="info" key="remove" onClick={()=>{removeBook(book)}}>Remove From List</EditButton>
+            :
+            <EditButton color="info" key="add2" onClick={()=>{addBook(book)}}>Add To My List</EditButton>
+            }
           </Typography>
           
         </CardContent>
@@ -128,14 +135,5 @@ export default function BookCard({book}) {
     </Card>
   );
 }
-
-// const book ={
-//         img: 'https://res.cloudinary.com/dccf9vnoo/image/upload/v1653538799/170445333_wide-db3b2247d873b121255b9057267b654896df3aee_pcivwa.jpg',
-//         title: 'The Great Gatsby',
-//         author: 'F. Scott-Fitzgerald',
-//         pages: 208,
-//         summary: "The Great Gatsby, third novel by F. Scott Fitzgerald, published in 1925 by Charles Scribner's Sons. Set in Jazz Age New York, the novel tells the tragic story of Jay Gatsby, a self-made millionaire, and his pursuit of Daisy Buchanan, a wealthy young woman whom he loved in his youth.",
-//         id: 1,
-//         subject: "Non-Fiction"
-//       }  
+ 
 
