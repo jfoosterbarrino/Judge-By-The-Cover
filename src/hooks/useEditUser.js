@@ -12,7 +12,7 @@ export default function useEditUser(userInfo){
             const response = await apiUser.putUser(user.token,userInfo, source.token)
             if (response){
                 setUser(response)
-                console.log(`User: ${userInfo.firstName} ${userInfo.lastName} Edited`)
+                console.log(`User: ${userInfo.first_name} ${userInfo.last_name} Edited`)
             }else if(response === false && response !== undefined){
                 console.log(`Please reauthorize you account`)
             }

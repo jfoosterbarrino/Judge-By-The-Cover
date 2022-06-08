@@ -17,6 +17,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import EditButton from './Button';
 import {BookContext} from '../context/BookContext';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 // import useBook from '../hooks/useBook';
 // import CircularProgress from '@mui/material/CircularProgress';
 // import Error from './Error';
@@ -73,8 +74,12 @@ export default function BookCard({book}) {
         //   </Avatar>
         // }
         action={
-          <IconButton aria-label="Add to My List" color="success">
+          <IconButton aria-label="Add/Remove" color="success">
+            {readingList.includes(book)?
+            <RemoveCircleOutlineIcon key="remove" onClick={()=>{removeBook(book)}}/>
+            :
             <AddCircleOutlineOutlinedIcon key="add" onClick={()=>{addBook(book)}}/>
+            }
           </IconButton>
         }
         title={book?.title}

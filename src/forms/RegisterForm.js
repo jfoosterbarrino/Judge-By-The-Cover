@@ -10,8 +10,8 @@ import {AppContext} from '../context/AppContext';
 
 const ValidationSchema = Yup.object(
     {
-        firstName: Yup.string().required('First Name is Required'),
-        lastName: Yup.string().required('Last Name is Required'),
+        first_name: Yup.string().required('First Name is Required'),
+        last_name: Yup.string().required('Last Name is Required'),
         email: Yup.string().email("Please check your email. Must be valid format.").required('Email is Required'),
         password: Yup.string().required('Password is Required'),
         confirmPassword: Yup.string().required('Password confirmation is Required').oneOf([Yup.ref('password')], 'Your passwords do not match')
@@ -31,8 +31,8 @@ export default function RegisterForm(){
     useEditUser(editUser)
 
     const initialValues ={
-        firstName:user?.firstName ?? "",
-        lastName:user?.lastName ?? "",
+        first_name:user?.first_name ?? "",
+        last_name:user?.last_name ?? "",
         email:user?.email ?? "",
         password:user?.password ?? "",
         confirmPassword:user?.confirmPassword ?? ""
@@ -59,8 +59,8 @@ export default function RegisterForm(){
     return(
         <form onSubmit={formik.handleSubmit}>
             <TextField
-                id = "firstName"
-                name="firstName"
+                id = "first_name"
+                name="first_name"
                 fullWidth
                 sx={{mb:2,mt:2,width:"50%"}}
                 color="success"
@@ -72,8 +72,8 @@ export default function RegisterForm(){
             />
 <br/>
             <TextField
-                id = "lastName"
-                name="lastName"
+                id = "last_name"
+                name="last_name"
                 fullWidth
                 sx={{mb:2,mt:2,width:"50%"}}
                 color="success"

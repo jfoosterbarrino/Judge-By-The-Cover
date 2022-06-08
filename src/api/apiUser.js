@@ -5,17 +5,17 @@ const endpoint = '/user'
 
 const postUser = async(data, cancelToken)=>{
     const response = await apiClientNoAuth(cancelToken).post(endpoint, data);
-    return response.ok
+    return response
 }
 
 const putUser = async(token, data, cancelToken)=>{
     const response = await apiClientTokenAuth(token, cancelToken).put(endpoint, data);
-    return response.ok
+    return response
 }
 
 const delUser = async(token, cancelToken)=>{
     const response = await apiClientTokenAuth(token, cancelToken).delete(endpoint);
-    return response.ok
+    return response
 }
 
 const exportedObject = {
