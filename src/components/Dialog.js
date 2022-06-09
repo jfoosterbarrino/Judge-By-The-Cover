@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import InfoIcon from '@mui/icons-material/Info';
 import BookCard from './BookCard';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -26,8 +26,8 @@ export default function AlertDialogSlide({book}) {
 
   return (
     <div>
-      <MenuBookOutlinedIcon onClick={handleClickOpen}>
-      </MenuBookOutlinedIcon>
+      <InfoIcon onClick={handleClickOpen}>
+      </InfoIcon>
       <Dialog
         open={open}
         TransitionComponent={Transition}

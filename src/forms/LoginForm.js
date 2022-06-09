@@ -6,6 +6,11 @@ import TextField from '@mui/material/TextField';
 import {AppContext} from '../context/AppContext';
 import Error from '../components/Error';
 import useLogin from '../hooks/useLogin';
+import Typography from '@mui/material/Typography';
+import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
+
 
 const FormSchema=Yup.object(
     {
@@ -23,9 +28,10 @@ const initialValues = {
 
 export default function LoginForm(){
 
-    const {setUser} = useContext(AppContext)
+    const {user, setUser} = useContext(AppContext)
     const [loginCreds, setLoginCreds] = useState({})
     const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     useLogin(loginCreds, setLoginCreds, setError, setUser)
 
@@ -48,7 +54,7 @@ export default function LoginForm(){
                 id = 'email'
                 name = 'email'
                 fullWidth
-                sx = {{mb:2,mt:2, width:"50%"}}
+                sx = {{mb:2,mt:2, width:"100%", backgroundColor: "#fffffa"}}
                 color = "info"
                 placeholder = "Email"
                 value={formik.values.email}
@@ -63,7 +69,7 @@ export default function LoginForm(){
                 name = 'password'
                 type = "password"
                 fullWidth
-                sx = {{mb:2, mt:2, width:"50%"}}
+                sx = {{mb:2, mt:2, width:"100%", backgroundColor: "#fffffa"}}
                 color = "info"
                 placeholder = "Password"
                 value = {formik.values.password}
@@ -71,9 +77,11 @@ export default function LoginForm(){
                 error = {formik.touched.password && Boolean(formik.errors.password)}
                 helperText = {formik.touched.password && formik.errors.password}
             />
-            <br/>
-
+         
+            <Typography sx={{display:"flex", justifyContent: 'center', mb:1}}>
             <Button type="submit " color = "info">Login</Button>
+            </Typography>
+                <Link to='/signup' style={{display:"flex", justifyContent: 'center', textDecoration: 'none'}}><Button>{user.token?"Edit Profile":"Create a new account!"}</Button></Link>
             <Error>{error}</Error>
         </form>
     )

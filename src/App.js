@@ -15,6 +15,18 @@ import SubjectBar from './components/SubjectBar';
 import Typography from '@mui/material/Typography';
 import Test from './components/Test';
 import MyReadingList from './views/MyReadingList';
+import Box from '@mui/material/Box';
+import {Routes, Route} from 'react-router-dom';
+import {useContext} from 'react';
+import {AppContext} from './context/AppContext'
+import HomePage from './views/HomePage';
+import Login from './views/Login';
+import Logout from './views/Logout';
+import BookList from './views/BookList';
+import SignUp from './views/SignUp';
+import SingleBook from './components/SingleBook';
+import RequireAccount from './components/RequireAccount';
+
 
 let userData = {
   "email" : "jalenfooster@gmail.com",
@@ -25,6 +37,7 @@ let userData = {
 
 const myToken = "fC87XwkBvWca7HVQbMWGPKnMi7O8F3HKecnhwGUv9WA"
 
+
 const handleAPITest= async ()=>{
   const source = CancelToken.source();
   const response_object= await apiUser.delUser("DtS_-E7Rn0fBBAlHRt4BZKHqrANnhNWK5QK3R_YOpow", source.token);
@@ -32,24 +45,23 @@ const handleAPITest= async ()=>{
 }
 
 function App() {
+
+  const {user} = useContext(AppContext)
+
   return (
     <>
       <Navbar/>
-      {/* <LoginForm/>
-      <br/>
-      <RegisterForm/>
-      <Test/>
-      <br/>
-      <LoginForm/>
-      <br/>
-      <Typography sx={{mb:10, display: "flex", justifyContent: 'center'}}>
-      <Button color="info" onClick={handleAPITest}>API TESTER</Button>
-      </Typography>
-      <br/> */}
-      <MyReadingList/> 
-      <br/>
-      <BookBrowser/>     
-      <br/>
+        <Box sx={{minHeight: '90vh'}}>
+          <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/logout" element={<Logout/>}/>
+            <Route path="/bookstore" element={<RequireAccount redirectTo={'/login'}><BookList/></RequireAccount>}/>
+            <Route path="/bookstore/:bookId" element={<RequireAccount redirectTo={'/login'}><SingleBook/></RequireAccount>}/>
+            <Route path="/readinglist" element={<RequireAccount redirectTo={'/login'}><MyReadingList/></RequireAccount>}/>
+            <Route path="/signup" element={<SignUp/>}/>
+          </Routes>
+        </Box>
       
     </>
   );

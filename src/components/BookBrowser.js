@@ -43,10 +43,10 @@ export default function BasicGrid() {
 
 
   return (<>
-    <Typography variant ="h3" component="div" color ="secondary" sx={{display: 'flex', justifyContent: 'center'}}>Explore Book Collection</Typography>
-    <hr/>
+    <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mt:10, mb:5, fontFamily:"Lato, sans-serif"}}>Explore Book Collection</Typography>
+  
     <br/>
-    <SubjectBar/>
+    {/* <SubjectBar/> */}
     <br/>
     <Box sx={{ flexGrow: 1, mb:10 }}>
       <Grid container spacing={10}>

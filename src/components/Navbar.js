@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,10 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import {AppContext} from '../context/AppContext'
+import {Link} from 'react-router-dom';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 // import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Explore Books', 'Other Readers', 'My List'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Explore Books', 'My Reading List'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,13 +37,18 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+  const {user} = useContext(AppContext)
+
   return (
-    <AppBar position="static" sx={{mb:10}}>
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
         <Box sx={{mr:3}}>
-            <img height="45px" className='p2' alt="JBC Logo" src="https://res.cloudinary.com/dccf9vnoo/image/upload/v1653535035/5ffbdeceb84323decd76084b2efca958_unocnd.png"/>
+          <Link to='/'>
+            <img height="50px" className='p2' alt="JBC Logo" src="https://res.cloudinary.com/dccf9vnoo/image/upload/v1653535035/5ffbdeceb84323decd76084b2efca958_unocnd.png"/>
+          </Link>
           </Box>
+          <Link to ='/' style={{textDecoration:"none"}}>
           <Typography
             variant="h6"
             noWrap
@@ -50,16 +57,19 @@ const ResponsiveAppBar = () => {
             sx={{
               mr: 8,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
+              fontFamily: 'Lato, sans-serif',
+              fontWeight: 300,
               letterSpacing: '.3rem',
               color: 'white',
               textDecoration: 'none',
+              mr:15
             }}
           >
+            
             JUDGE BY THE COVER
+            
           </Typography>
-
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -106,7 +116,7 @@ const ResponsiveAppBar = () => {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'Lato, sans-serif',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'white',
@@ -115,22 +125,53 @@ const ResponsiveAppBar = () => {
           >
             JBC
           </Typography>
+          {user.token?
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Link to='/bookstore' style={{textDecoration:"none"}}>
               <Button
-                key={page}
+                key="explore"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, mx: 3, color: 'white', display: 'block', fontFamily:"Lato, sans-serif"}}
               >
-                {page}
+                Explore Books
               </Button>
-            ))}
+              </Link>
+              <Link to='/readinglist' style={{textDecoration:"none"}}>
+              <Button
+                key="reading"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, mx: 3, color: 'white', display: 'block', fontFamily:"Lato, sans-serif" }}
+              >
+                My Reading List
+              </Button>
+            </Link>
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          :
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Link to='/login' style={{textDecoration:"none"}}>
+            <Button
+              key="login-nav"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, mx: 3, color: 'white', display: 'block', fontFamily:"Lato, sans-serif"}}
+            >
+              LOGIN
+            </Button>
+            </Link>
+            <Link to='/signup' style={{textDecoration:"none"}}>
+            <Button
+              key="signup-nav"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, mx: 3, color: 'white', display: 'block', fontFamily:"Lato, sans-serif" }}
+            >
+              SIGN UP
+            </Button>
+          </Link>
+        </Box>
+          }
+          <Box sx={{ flexGrow: 0, fontFamily:"Lato, sans-serif" }}>
+            <Tooltip title="JBC">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color:"#fffffa", border: '3px solid #6b0504', p:1, backgroundColor:"#3a6ea5", fontFamily:"Lato, sans-serif"}}>
+                {user?.first_name? user.first_name[0]: <AutoStoriesIcon/>}{user?.last_name? user.last_name[0]: ""}
               </IconButton>
             </Tooltip>
             <Menu
@@ -149,11 +190,33 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {user.token?
+                <MenuItem key="editprofile" onClick={handleCloseUserMenu}>
+                  
+                  <Typography textAlign="center">
+                  <Link to='/signup' style={{textDecoration:"none", color:"#05204a", fontFamily:"Lato, sans-serif"}}>
+                    Edit Profile
+                    </Link>
+                    </Typography>
                 </MenuItem>
-              ))}
+                :
+                <Typography color="secondary" sx={{pl:2,pr:2, fontFamily:"Lato, sans-serif"}}>
+                Welcome to JBC!
+                </Typography>
+              }
+
+              {user.token?
+                <MenuItem key="logout" onClick={handleCloseUserMenu}>
+                  
+                  <Typography textAlign="center">
+                  <Link to='/logout' style={{textDecoration:"none", color:"#05204a", fontFamily:"Lato, sans-serif"}}>
+                    Logout
+                    </Link>
+                    </Typography>
+                </MenuItem>
+                :
+                ""
+              }
             </Menu>
           </Box>
         </Toolbar>

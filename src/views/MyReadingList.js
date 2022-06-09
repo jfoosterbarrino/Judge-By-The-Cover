@@ -7,7 +7,7 @@ export default function MyReadingList(){
         const {readingList} = useContext(BookContext)
         if(readingList.length<=0){
             return(
-                <Typography variant="h3" color="primary" sx={{display:"flex", justifyContent: 'center'}}>No Books In Your List Yet</Typography>
+                <Typography variant="h3" color="primary" sx={{display:"flex", justifyContent: 'center', mt:10}}>No Books In Your List Yet</Typography>
             )
         }
     return(

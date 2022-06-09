@@ -6,6 +6,9 @@ import TextField from '@mui/material/TextField';
 import useCreateUser from '../hooks/useCreateUser';
 import useEditUser from '../hooks/useEditUser';
 import {AppContext} from '../context/AppContext';
+import {useNavigate} from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import {Link} from 'react-router-dom';
 
 
 const ValidationSchema = Yup.object(
@@ -26,10 +29,11 @@ export default function RegisterForm(){
 
     const [newUser, setNewUser] = useState({})
     const [editUser, setEditUser] = useState({})
+    const navigate = useNavigate()
 
     useCreateUser(newUser)
     useEditUser(editUser)
-
+    
     const initialValues ={
         first_name:user?.first_name ?? "",
         last_name:user?.last_name ?? "",
@@ -39,7 +43,7 @@ export default function RegisterForm(){
     }
 
     const handleSubmit=(values, resetForm) => {
-        if(user){
+        if(user.token){
             setEditUser(values)
         }else{
             setNewUser(values)
@@ -56,13 +60,14 @@ export default function RegisterForm(){
         enableReinitialize : true
     })
 
-    return(
+    return(<>
+    
         <form onSubmit={formik.handleSubmit}>
             <TextField
                 id = "first_name"
                 name="first_name"
                 fullWidth
-                sx={{mb:2,mt:2,width:"50%"}}
+                sx={{mb:2,mt:2,width:"100%", backgroundColor: "#fffffa"}}
                 color="success"
                 placeholder="First Name"
                 value={formik.values.firstName}
@@ -75,7 +80,7 @@ export default function RegisterForm(){
                 id = "last_name"
                 name="last_name"
                 fullWidth
-                sx={{mb:2,mt:2,width:"50%"}}
+                sx={{mb:2,mt:2,width:"100%", backgroundColor: "#fffffa"}}
                 color="success"
                 placeholder="Last Name"
                 value={formik.values.lastName}
@@ -88,7 +93,7 @@ export default function RegisterForm(){
                 id = 'email'
                 name = 'email'
                 fullWidth
-                sx = {{mb:2,mt:2, width:"50%"}}
+                sx = {{mb:2,mt:2, width:"100%", backgroundColor: "#fffffa"}}
                 color="success"
                 placeholder = "Email"
                 value={formik.values.email}
@@ -102,7 +107,7 @@ export default function RegisterForm(){
                 name = 'password'
                 type = 'password'
                 fullWidth
-                sx = {{mb:2, mt:2, width:"50%"}}
+                sx = {{mb:2, mt:2, width:"100%", backgroundColor: "#fffffa"}}
                 color="success"
                 placeholder = "Password"
                 value = {formik.values.password}
@@ -110,13 +115,13 @@ export default function RegisterForm(){
                 error = {formik.touched.password && Boolean(formik.errors.password)}
                 helperText = {formik.touched.password && formik.errors.password}
             />
-<br/>
+
             <TextField
                 id = 'confirmPassword'
                 name = 'confirmPassword'
                 type = 'password'
                 fullWidth
-                sx = {{mb:2, mt:2, width:"50%"}}
+                sx = {{mb:2, mt:2, width:"100", backgroundColor: "#fffffa"}}
                 color="success"
                 placeholder = "Confirm Password"
                 value = {formik.values.confirmPassword}
@@ -124,8 +129,14 @@ export default function RegisterForm(){
                 error = {formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
                 helperText = {formik.touched.confirmPassword && formik.errors.confirmPassword}
             />
-<br/>
-            <Button type="submit" color = "success">{user ? "Edit Profile" : "Create New Account"}</Button>
+      
+            <Typography sx={{display:"flex", justifyContent: 'center'}}>
+            <Button type="submit" sx={{mb:1}} color = "success">{user.token ? "Edit Profile" : "Create New Account"}</Button>
+            </Typography>
+            <Typography sx={{display:"flex", justifyContent: 'center'}}>
+            <Link to ='/login' style={{textDecoration:"none"}}><Button color="primary">Login</Button></Link>
+            </Typography>
         </form>
-    )
+        
+    </>)
 }

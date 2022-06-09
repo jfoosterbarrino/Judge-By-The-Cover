@@ -40,14 +40,14 @@ export default function TitlebarImageList() {
   }
   
   return (<>
-    <Typography variant ="h3" component="div" color ="secondary" sx={{display: 'flex', justifyContent: 'center'}}>My Book List</Typography>
-    <hr/>
+    <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mt:10, mb:5, fontFamily:"Lato, sans-serif"}}>My Reading List</Typography>
+    <br/>
     <br/>
     <Typography sx={{display: 'flex', justifyContent: 'center'}}>
-    <Button key="clear" color="success" sx ={{m:"auto"}} onClick={()=>{clearList()}}>Clear My List</Button>
+    <Button key="clear" color="success" sx ={{mb:5}} onClick={()=>{clearList()}}>Clear List</Button>
     </Typography>
     <br/>
-    <ImageList cols={3}>
+    <ImageList cols={5}>
       
       {readingList?.map((book) => (
         <ImageListItem key={book.img}>

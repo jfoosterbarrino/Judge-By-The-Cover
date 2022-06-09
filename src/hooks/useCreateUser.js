@@ -2,8 +2,10 @@ import {useEffect, useContext} from 'react';
 import apiUser from '../api/apiUser';
 import {CancelToken} from 'apisauce';
 import {AppContext} from '../context/AppContext';
+import {useNavigate} from 'react-router-dom';
 
 export default function useCreateUser(userData){
+    const navigate = useNavigate()
 
     useEffect(()=>{
 
@@ -13,11 +15,14 @@ export default function useCreateUser(userData){
                 console.log(response);
                 if (response){
                     console.log(`User: ${userData.first_name} ${userData.last_name} Created`)
+                    navigate('/login')
                 }else if(response === false && response !== undefined){
                     console.log(`Please reauthorize you account`)
                 }
             }
-            createUser()
+            if(userData.first_name){
+                createUser()
+            }
             return ()=>{source.cancel()}
             
         },

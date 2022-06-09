@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react';
 import {getUser} from '../api/apiBasicAuth';
 import {CancelToken} from 'apisauce';
+import {useNavigate} from 'react-router-dom';
 
 export default function useLogin(loginCreds, setLoginCreds, setError, setUser){
+    const navigate = useNavigate()
 
     const login = async(cancelToken)=>{
         const response = await getUser(loginCreds.email, loginCreds.password, cancelToken)
@@ -11,6 +13,7 @@ export default function useLogin(loginCreds, setLoginCreds, setError, setUser){
             console.log('logged in');
             setUser(response.user);
             setLoginCreds({})
+            navigate('/')
             // navigate to homepage
         }
         setError(response.error);

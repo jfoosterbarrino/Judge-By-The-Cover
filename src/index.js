@@ -8,10 +8,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import primaryTheme from'./themes/primaryTheme';
 import AppContextProvider from './context/AppContext';
 import BookContextProvider from './context/BookContext';
+import {BrowserRouter} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <BrowserRouter>
     <ThemeProvider theme ={primaryTheme}>
       <BookContextProvider>
       <AppContextProvider>
@@ -20,6 +22,7 @@ root.render(
       </AppContextProvider>
       </BookContextProvider>
     </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

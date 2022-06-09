@@ -18,9 +18,7 @@ const BookContextProvider = ({children})=>{
 
     
     useEffect(()=>{
-        if(readingList?.length >0){
             localStorage.setItem('readingList', JSON.stringify(readingList))
-        }
     }, [readingList]
     )
     

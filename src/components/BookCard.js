@@ -18,6 +18,8 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import EditButton from './Button';
 import {BookContext} from '../context/BookContext';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import {useNavigate} from 'react-router-dom';
 // import useBook from '../hooks/useBook';
 // import CircularProgress from '@mui/material/CircularProgress';
 // import Error from './Error';
@@ -37,6 +39,7 @@ const ExpandMore = styled((props) => {
 export default function BookCard({book}) {
   const [expanded, setExpanded] = React.useState(false); 
   const {addBook, removeBook, readingList} = useContext(BookContext)
+  const navigate = useNavigate()
 
   
   // const {error, book} = useBook(21)
@@ -66,8 +69,9 @@ export default function BookCard({book}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       {console.log(book)}
-    <Typography color="secondary">
+    <Typography color="#05204a">
       <CardHeader
+      
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
         //     R
@@ -75,16 +79,19 @@ export default function BookCard({book}) {
         // }
         action={
           <IconButton aria-label="Add/Remove" color="success">
-            {readingList.includes(book)?
-            <RemoveCircleOutlineIcon key="remove" onClick={()=>{removeBook(book)}}/>
-            :
-            <AddCircleOutlineOutlinedIcon key="add" onClick={()=>{addBook(book)}}/>
-            }
+            
           </IconButton>
         }
         title={book?.title}
         subheader={book?.author}
       />
+      <Typography color="#3a6ea5" sx={{display:"flex", justifyContent: 'space-between', pr:2, pl:2,pb:1}}>
+      <MenuBookOutlinedIcon key="info" color="success"onClick={()=>navigate('/bookstore/'+book.id)}/>
+      {readingList.includes(book)?
+            <RemoveCircleOutlineIcon key="remove" onClick={()=>{removeBook(book)}}/>
+            :
+            <AddCircleOutlineOutlinedIcon key="add" onClick={()=>{addBook(book)}}/>
+            }</Typography>
     </Typography>
       <CardMedia
         component="img"
@@ -93,9 +100,10 @@ export default function BookCard({book}) {
         alt={book?.title}
       />
       <CardContent>
-        <Typography  variant="body2" color="secondary">
+        <Typography  variant="body2" color="secondary" sx={{fontFamily:"Lato, sans-serif"}}>
         {book?.summary}
         </Typography>
+        
       </CardContent>
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
@@ -118,13 +126,13 @@ export default function BookCard({book}) {
         <CardContent>            
           <hr/>
             <br/>
-          <Typography variant="body2" color="primary" sx={{display:"flex", justifyContent: 'center'}} paragraph>
+          <Typography variant="body2" color="primary" sx={{display:"flex", justifyContent: 'center', fontFamily:"Lato, sans-serif"}} paragraph>
             ID: {book?.id}
           </Typography>
-          <Typography variant="body2" color="primary" sx={{display:"flex", justifyContent: 'center'}} paragraph>
+          <Typography variant="body2" color="primary" sx={{display:"flex", justifyContent: 'center', fontFamily:"Lato, sans-serif"}} paragraph>
             Pages: {book?.pages}
           </Typography>
-          <Typography variant="body2" color="primary" sx={{display:"flex", justifyContent: 'center'}} paragraph>
+          <Typography variant="body2" color="primary" sx={{display:"flex", justifyContent: 'center', fontFamily:"Lato, sans-serif"}} paragraph>
             Subject: {book?.subject}
           </Typography>
           <Typography sx={{display:"flex", justifyContent: 'center'}} paragraph>
