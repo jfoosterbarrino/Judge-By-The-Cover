@@ -43,7 +43,10 @@ export default function BasicGrid() {
 
 
   return (<>
-    <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mt:10, mb:5, fontFamily:"Lato, sans-serif"}}>Explore Book Collection</Typography>
+       <br/>
+     <br/>
+     <br/>
+    <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mb:5, fontFamily:"Lato, sans-serif"}}>Explore Book Collection</Typography>
   
     <br/>
     {/* <SubjectBar/> */}

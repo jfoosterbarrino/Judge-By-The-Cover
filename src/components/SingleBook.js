@@ -39,7 +39,11 @@ export default function FullWidthGrid() {
         }
 
   return (<>
-     <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mt:10, mb:10, fontFamily:"Lato, sans-serif"}}>{book.title}</Typography>
+   <Typography style={{backgroundColor: "#F3ECE7", height:"100vh"}}>
+     <br/>
+     <br/>
+     <br/>
+     <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mb:10, fontFamily:"Lato, sans-serif"}}>{book.title}</Typography>
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={3.5} md={3.5}>
@@ -71,5 +75,6 @@ export default function FullWidthGrid() {
         </Grid>
       </Grid>
     </Box>
+    </Typography>
   </>);
 }

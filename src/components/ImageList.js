@@ -40,13 +40,16 @@ export default function TitlebarImageList() {
   }
   
   return (<>
-    <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mt:10, mb:5, fontFamily:"Lato, sans-serif"}}>My Reading List</Typography>
+       <br/>
+     <br/>
+     <br/>
+    <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mb:5, fontFamily:"Lato, sans-serif"}}>My Reading List</Typography>
     <br/>
-    <br/>
+    
     <Typography sx={{display: 'flex', justifyContent: 'center'}}>
     <Button key="clear" color="success" sx ={{mb:5}} onClick={()=>{clearList()}}>Clear List</Button>
     </Typography>
-    <br/>
+    
     <ImageList cols={5}>
       
       {readingList?.map((book) => (
