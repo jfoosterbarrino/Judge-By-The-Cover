@@ -1,7 +1,6 @@
-import {useEffect, useContext} from 'react';
+import {useEffect} from 'react';
 import apiUser from '../api/apiUser';
 import {CancelToken} from 'apisauce';
-import {AppContext} from '../context/AppContext';
 import {useNavigate} from 'react-router-dom';
 
 export default function useCreateUser(userData){

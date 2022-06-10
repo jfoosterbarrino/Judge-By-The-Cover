@@ -1,12 +1,10 @@
-import React,{useContext, useState} from 'react';
+import React,{useContext} from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import BookCard from './BookCard';
 import { Typography } from '@mui/material';
-import Button from './Button';
-import SubjectBar from './SubjectBar';
 import useBooks from '../hooks/useBooks';
 import CircularProgress from '@mui/material/CircularProgress';
 import Error from './Error';
