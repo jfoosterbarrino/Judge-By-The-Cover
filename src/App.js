@@ -12,6 +12,14 @@ import SingleBook from './components/SingleBook';
 import RequireAccount from './components/RequireAccount';
 
 
+// Below is to Test API Calls in App.js before Admin stuff is built
+
+// const handleAPITest= async ()=>{
+//     const source = CancelToken.source();
+//     const response_object= await apiUser.delUser("DtS_-E7Rn0fBBAlHRt4BZKHqrANnhNWK5QK3R_YOpow", source.token);
+//     console.log(response_object)
+//   }
+
 
 function App() {
 

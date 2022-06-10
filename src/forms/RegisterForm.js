@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import useCreateUser from '../hooks/useCreateUser';
 import useEditUser from '../hooks/useEditUser';
 import {AppContext} from '../context/AppContext';
-import {useNavigate} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import {Link} from 'react-router-dom';
 
@@ -29,7 +28,6 @@ export default function RegisterForm(){
 
     const [newUser, setNewUser] = useState({})
     const [editUser, setEditUser] = useState({})
-    const navigate = useNavigate()
 
     useCreateUser(newUser)
     useEditUser(editUser)
@@ -131,10 +129,13 @@ export default function RegisterForm(){
             />
       
             <Typography sx={{display:"flex", justifyContent: 'center'}}>
-            <Button type="submit" sx={{mb:1}} color = "success">{user.token ? "Edit Profile" : "Create New Account"}</Button>
+            <Button type="submit" sx={{mb:1}} color = "success">{user.token ? "Update Profile" : "Create New Account"}</Button>
             </Typography>
             <Typography sx={{display:"flex", justifyContent: 'center'}}>
-            <Link to ='/login' style={{textDecoration:"none"}}><Button color="primary">Login</Button></Link>
+            {user.token? 
+            ""
+            :
+            <Link to ='/login' style={{textDecoration:"none"}}><Button color="primary">Login</Button></Link>}
             </Typography>
         </form>
         

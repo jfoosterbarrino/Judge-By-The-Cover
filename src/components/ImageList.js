@@ -1,35 +1,18 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import SubjectBar from './SubjectBar';
-import useBooks from '../hooks/useBooks';
 import {BookContext} from '../context/BookContext';
 import Box from '@mui/material/Box';
-import Error from './Error';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from './Button';
 import Dialog from './Dialog';
 
 export default function TitlebarImageList() {
-  const {bookList, setBookList, readingList, removeBook, clearList} = useContext(BookContext)
-  const {error, books} = useBooks()
-  setBookList(books)
-
-  if(error){
-    return(
-      <Box sx={{display:"flex"}}>
-        <Error>{error}</Error>
-      </Box>
-    )
-  }
+  const {readingList, removeBook, clearList} = useContext(BookContext)
 
   if(!readingList){
     return(
@@ -50,7 +33,7 @@ export default function TitlebarImageList() {
     <Button key="clear" color="success" sx ={{mb:5}} onClick={()=>{clearList()}}>Clear List</Button>
     </Typography>
     
-    <ImageList cols={5}>
+    <ImageList cols={5} sx={{pl:5,pr:5}} gap={20}>
       
       {readingList?.map((book) => (
         <ImageListItem key={book.img}>

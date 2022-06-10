@@ -12,7 +12,7 @@ export default function MyReadingList(){
         }
     return(
         <>
-        <Typography style={{backgroundColor: "#F3ECE7", height:"100vh"}}>
+        <Typography style={{backgroundColor: "#F3ECE7", backgroundSize:"100%"}}>
             <ImageList/>
         </Typography>
         </>

@@ -26,6 +26,6 @@ export default function useEditUser(userInfo){
         }
         return ()=>{source.cancel()}
     },
-    [userInfo]
+    [userInfo, navigate, setUser, user.token]
     )
 }

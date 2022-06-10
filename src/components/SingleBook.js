@@ -44,8 +44,8 @@ export default function FullWidthGrid() {
      <br/>
      <br/>
      <Typography variant ="h3" component="div" color ="#05204a" sx={{display: 'flex', justifyContent: 'center', border: '3px solid #6b0504', padding:3, mb:10, fontFamily:"Lato, sans-serif"}}>{book.title}</Typography>
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+    <Box sx={{ flexGrow: 1,pl:5,pr:5}}>
+      <Grid container spacing={5}>
         <Grid item xs={3.5} md={3.5}>
           <Item sx={{backgroundColor:"#05204a", color:"#FFFFFA", fontFamily:"Lato, sans-serif"}}>              
             <h3>Title: </h3><h3>{book?.title}</h3>
@@ -59,7 +59,7 @@ export default function FullWidthGrid() {
         </Grid>
         <Grid item xs={5} md={5}>
           <Item sx={{backgroundColor:"#ba8f95"}}>
-            <img src= {book?.img}/>
+            <img src= {book?.img} alt="book-img"/>
           </Item>
         </Grid>
         <Grid item xs={3.5} md={3.5}>
