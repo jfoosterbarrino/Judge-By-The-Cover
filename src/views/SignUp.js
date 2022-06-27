@@ -10,7 +10,7 @@ export default function SignUp() {
   
   return (
     <Paper style={{backgroundImage: `url(${image})`, height:"100vh", backgroundPosition: "center", backgroundSize:"cover"}}>
-        <Typography color="#fffffa"variant="h2" sx={{display:"flex", justifyContent: 'center', pt:9, mb:1, fontFamily: 'Prata, serif'}}>{user.token? "Edit Profile":"Sign Up"}</Typography>
+        <Typography color="#fffffa"variant="h2" sx={{display:"flex", justifyContent: 'center', pt:9, mb:1, fontFamily: 'Prata, serif'}}>{user?.token? "Edit Profile":"Sign Up"}</Typography>
         <Typography sx={{display:"flex", justifyContent: 'center'}}><RegisterForm/></Typography>
     </Paper>
   )

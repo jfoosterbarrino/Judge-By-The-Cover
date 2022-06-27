@@ -51,7 +51,7 @@ export default function BasicGrid() {
     <br/>
     <Box sx={{ flexGrow: 1, pl:5,pr:5}}>
       <Grid container spacing={10}>
-        {bookList.map((book)=>(
+        {bookList?.map((book)=>(
         <Grid item lg={3} md={4} sm={6} xs={12} key={book.id} sx={{display:"flex", justifyContent:"center"}}>
           <Item>
             <BookCard book={book}/>

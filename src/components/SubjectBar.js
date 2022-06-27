@@ -21,12 +21,12 @@ export default function SubjectBar(handleClick=()=>{}) {
     
   return (
     <Stack direction="row" spacing={1} sx={{display:"flex", justifyContent: "center"}}>
-      {subjects.map((subj)=>(
+      {subjects?.map((subj)=>(
       subj === actSubj ? 
       <Chip  
       key ={subj.id} 
       color="success" 
-      label={subj.name} 
+      label={subj?.name} 
       onClick={()=>{handleActSubj(subj); handleClick()}} /> 
       : 
       <Chip 

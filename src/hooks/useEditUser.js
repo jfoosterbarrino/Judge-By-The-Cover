@@ -11,7 +11,7 @@ export default function useEditUser(userInfo){
     useEffect(()=>{
         const source =CancelToken.source();
         const editUser = async()=>{
-            const response = await apiUser.putUser(user.token,userInfo, source.token)
+            const response = await apiUser.putUser(user?.token,userInfo, source.token)
             if (response){
                 setUser(response)
                 console.log(`User: ${userInfo.first_name} ${userInfo.last_name} Edited`)

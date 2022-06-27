@@ -10,7 +10,7 @@ export default function useDeleteUser(){
 
             const source = CancelToken.source()
             const deleteUser = async()=>{
-                const response = await apiUser.delUser(user.token, source.token);
+                const response = await apiUser.delUser(user?.token, source.token);
                 console.log(response)
                 setUser({})
             }

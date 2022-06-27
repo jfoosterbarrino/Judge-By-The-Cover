@@ -79,7 +79,7 @@ export default function LoginForm(){
             <Typography sx={{display:"flex", justifyContent: 'center', mb:1}}>
             <Button type="submit " color = "info">Login</Button>
             </Typography>
-                <Link to='/signup' style={{display:"flex", justifyContent: 'center', textDecoration: 'none'}}><Button>{user.token?"Edit Profile":"Create a new account!"}</Button></Link>
+                <Link to='/signup' style={{display:"flex", justifyContent: 'center', textDecoration: 'none'}}><Button>{user?.token?"Edit Profile":"Create a new account!"}</Button></Link>
             <Error>{error}</Error>
         </form>
     )

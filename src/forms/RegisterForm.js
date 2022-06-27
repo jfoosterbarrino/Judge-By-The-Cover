@@ -41,7 +41,7 @@ export default function RegisterForm(){
     }
 
     const handleSubmit=(values, resetForm) => {
-        if(user.token){
+        if(user?.token){
             setEditUser(values)
         }else{
             setNewUser(values)
@@ -129,10 +129,10 @@ export default function RegisterForm(){
             />
       
             <Typography sx={{display:"flex", justifyContent: 'center'}}>
-            <Button type="submit" sx={{mb:1}} color = "success">{user.token ? "Update Profile" : "Create New Account"}</Button>
+            <Button type="submit" sx={{mb:1}} color = "success">{user?.token ? "Update Profile" : "Create New Account"}</Button>
             </Typography>
             <Typography sx={{display:"flex", justifyContent: 'center'}}>
-            {user.token? 
+            {user?.token? 
             ""
             :
             <Link to ='/login' style={{textDecoration:"none"}}><Button color="primary">Login</Button></Link>}

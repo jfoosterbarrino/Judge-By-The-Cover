@@ -36,26 +36,26 @@ export default function TitlebarImageList() {
     <ImageList cols={5} sx={{pl:5,pr:5}} gap={20}>
       
       {readingList?.map((book) => (
-        <ImageListItem key={book.img}>
+        <ImageListItem key={book?.img}>
           <img
-            src={`${book.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${book.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={book.title}
+            src={`${book?.img}?w=248&fit=crop&auto=format`}
+            srcSet={`${book?.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={book?.title}
             loading="lazy"
           />
           <ImageListItemBar
-            title={book.title}
-            subtitle={book.author}
+            title={book?.title}
+            subtitle={book?.author}
             actionIcon={<>
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`remove ${book.title} from my list`}
+                aria-label={`remove ${book?.title} from my list`}
               >
                 <RemoveCircleOutlineIcon key="remove" onClick={()=>{removeBook(book)}}/>
               </IconButton>
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)', mr:1 }}
-                aria-label={`more info about ${book.title}`}
+                aria-label={`more info about ${book?.title}`}
               >
                 <Dialog book={book}/>
               </IconButton>
