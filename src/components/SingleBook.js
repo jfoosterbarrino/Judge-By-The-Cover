@@ -59,7 +59,7 @@ export default function FullWidthGrid() {
         </Grid>
         <Grid item xs={5} md={5}>
           <Item sx={{backgroundColor:"#ba8f95"}}>
-            <img src= {book?.img} alt="book-img"/>
+            <img width="400px" src= {book?.img} alt="book-img"/>
           </Item>
         </Grid>
         <Grid item xs={3.5} md={3.5}>

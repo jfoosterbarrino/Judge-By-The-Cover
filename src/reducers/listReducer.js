@@ -9,6 +9,12 @@ const listActions={
 function listReducer(readingList, {type, book}){
     switch(type){
         case listActions.addBook:
+            let sliceList = readingList.slice()
+            for(let passage of sliceList){
+                if(passage.id === book.id){
+                    return sliceList
+                }
+            }
             return [...readingList, book]
         case listActions.removeBook:
             let newList = readingList.slice()
