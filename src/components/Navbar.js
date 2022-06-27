@@ -125,7 +125,7 @@ const ResponsiveAppBar = () => {
           >
             JBC
           </Typography>
-          {user.token?
+          {user?.token?
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link to='/bookstore' style={{textDecoration:"none"}}>
               <Button
@@ -190,7 +190,7 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {user.token?
+              {user?.token?
                 <MenuItem key="editprofile" onClick={handleCloseUserMenu}>
                   
                   <Typography textAlign="center">
@@ -205,7 +205,7 @@ const ResponsiveAppBar = () => {
                 </Typography>
               }
 
-              {user.token?
+              {user?.token?
                 <MenuItem key="logout" onClick={handleCloseUserMenu}>
                   
                   <Typography textAlign="center">
